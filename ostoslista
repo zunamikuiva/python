@@ -1,0 +1,59 @@
+# Alustetaan tyhjä lista ostoksia varten
+lista = []
+
+# Pääohjelman silmukka, joka toistuu, kunnes käyttäjä lopettaa (valitsee 0)
+while True:
+    # Tulostetaan lista ja käyttäjälle valikko eri vaihtoehdoista
+    print("Ostoslistasi sisältää seuraavat tuotteet:")
+    print(lista)
+    print("""Voit valita alla olevista toiminnoista:
+1) Lisää
+2) Poista
+0) Lopeta""")
+    
+    # Pyydetään käyttäjältä valinta ja muunnetaan se kokonaisluvuksi
+    valinta = int(input("Valintasi: "))
+    
+    # Jos käyttäjä valitsee 1, lisätään uusi tuote listalle
+    if valinta == 1:
+        Tuote = input("Anna lisättävä tuote: ")
+        lista.append(Tuote)  # Lisätään tuote listaan
+        print()  # Tulostetaan tyhjä rivi visuaalista erottelua varten
+        continue  # Palataan silmukan alkuun
+      
+    # Jos käyttäjä valitsee 2, poistetaan tuote listalta
+    if valinta == 2:
+        # Tarkistetaan, onko lista tyhjä
+        if not lista:
+            print("Tuotelista on tyhjä")  # Ilmoitetaan käyttäjälle, jos lista on tyhjä
+            continue  # Palataan alkuun, jos lista on tyhjä
+        
+        # Jos listassa on tuotteita, jatketaan
+        TM = len(lista)  # Lasketaan tuotteiden määrä
+        print("Ostoslistassasi on " + str(TM) + " tuotetta.")
+        
+        # Pyydetään käyttäjältä poistettavan tuotteen järjestysnumero
+        l = int(input("Anna poistettavan tuotteen järjestysnumero: "))
+        print()  # Tyhjä rivi visuaalista erottelua varten
+        
+        # Muunnetaan annettu järjestysnumero listan indeksiksi (joka alkaa 0:sta)
+        p = l - 1
+        del lista[p]  # Poistetaan valittu tuote listasta
+        continue  # Palataan alkuun
+
+    # Jos käyttäjä valitsee 0, päätetään ohjelma
+    if valinta == 0:
+        # Tarkistetaan onko lista tyhjä lopetettaessa
+        if not lista:
+            print("Sinulta jäi ostamatta seuraavat tuotteet:")
+            print(str(lista))  # Tyhjä lista tulostetaan
+        else:
+            print("Sinulta jäi ostamatta seuraavat tuotteet:")
+            print(str(lista))  # Tulostetaan lista ostamattomista tuotteista
+        print("Kiitos ohjelman käytöstä.")
+        break  # Lopetetaan ohjelma silmukasta poistumalla
+    
+    # Jos käyttäjä antaa tuntemattoman valinnan, tulostetaan virheilmoitus
+    else:
+        print("Tunnistamaton valinta.")
+        print()  # Tyhjä rivi visuaalista erottelua varten
